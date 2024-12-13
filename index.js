@@ -2,18 +2,14 @@ const button = document.getElementById("fact-button");
 const factBox = document.getElementById("fact-box");
 let facts = [];
 let index = 0;
-
-// Function to fetch facts from API
 async function fetchFacts() {
   const response = await fetch("https://catfact.ninja/facts");
   const data = await response.json();
   facts = data.data.map((fact) => fact.fact).slice(0, 15); // Limit to 15 facts
 }
 
-// Fetch facts on load
 fetchFacts();
 
-// Button click event
 button.addEventListener("click", () => {
   if (index < facts.length) {
     factBox.textContent = facts[index];
